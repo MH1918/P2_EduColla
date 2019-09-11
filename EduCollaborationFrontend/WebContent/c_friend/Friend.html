@@ -1,0 +1,57 @@
+
+<div ng-controller="FriendController">
+	<div class="container">
+		<div style="background-color:#aee8e3; border-radius: 50px 20px 20px 20px;">
+			<div style="background-color:#0e9e92; color: white; padding:1px; border-radius: 50px 20px;"><h3 align="left"> &nbsp;&nbsp;Friend List </h3></div><br>
+			<div class="row text-center text-lg-left">
+				<div ng-repeat="friend in friendList" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div ng-show="friend.username==currentUser.username">
+						<img alt="" src="http://localhost:8092/EduCollaborationMiddleware/getImage/{{friend.friendUsername}}" class="img-circle" width="100">
+						<p>
+							<strong> {{friend.friendUsername}} </strong>
+							<input type="button" value="Unfriend" ng-click="unfriend(friend.friendId)" class="btn btn-danger"/>
+						</p>
+					</div>
+					<div ng-show="friend.friendUsername==currentUser.username">
+						<img alt="" src="http://localhost:8092/EduCollaborationMiddleware/getImage/{{friend.username}}" class="img-circle" width="100">
+						<p>
+							<strong> {{friend.username}} </strong>
+							<input type="button" value="Unfriend" ng-click="unfriend(friend.friendId)" class="btn btn-danger"/>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div style="background-color:#ace6d5; border-radius: 50px 20px 20px 20px;">
+			<div style="background-color:#0eb384; color: white; padding:1px; border-radius: 50px 20px;"><h3 align="left"> &nbsp;&nbsp;Pending Friend List </h3></div><br>
+			<div class="row text-center text-lg-left">
+				<div ng-repeat="friend in pendingFriendList" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div ng-show="friend.friendUsername==currentUser.username">
+						<img alt="" src="http://localhost:8092/EduCollaborationMiddleware/getImage/{{friend.username}}" class="img-circle" width="100">
+						<p>
+							<strong> {{friend.username}} </strong>
+							<input type="button" value="Accept" ng-click="accept(friend.friendId)" class="btn btn-primary"/>
+							<input type="button" value="Reject" ng-click="reject(friend.friendId)" class="btn btn-danger"/>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div style="background-color:#e3cca3; border-radius: 50px 20px 20px 20px;">
+			<div style="background-color:#b57b16; color: white; padding:1px; border-radius: 50px 20px;"><h3 align="left"> &nbsp;&nbsp;Suggested Friend List </h3></div><br>
+			<div class="row text-center text-lg-left">
+				<div ng-repeat="friend in suggestedFriendList" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+					<div>
+						<img alt="" src="http://localhost:8092/EduCollaborationMiddleware/getImage/{{friend.username}}" class="img-circle" width="100">
+						<p>
+							<strong> {{friend.username}} </strong>
+							<input type="button" value="Send Request" ng-click="sendFriendRequest(friend.username)" class="btn btn-primary"/>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

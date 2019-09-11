@@ -1,0 +1,50 @@
+
+<div ng-controller="JobController">
+	<div class="container-fluid">
+		<div style="padding:1px; background-color: #0c73cc; color: white;"><h2 align="center">Jobs</h2></div>
+	</div>
+	<br><br>
+	<div class="container">
+	<div class="row">
+		<div class="main1">
+			<div>
+				<div class="panel-group" id="accordion">
+					<div class="panel panle-default" ng-repeat="job in jobs">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="/#{{job.jobId}}">{{job.jobId}}#{{job.designation}}</a>
+							</h4>
+						</div>
+						<div id="{{job.jobId}}" class="panel-collapse collapse">
+							<div class="panel-body">
+								<table class="table table-bordered">
+									<tr>
+										<td style="background-color:#15d1b5;"> Company Name </td>
+										<td> {{job.companyName}} </td>
+										<td style="background-color:#15d1b5;"> Last Date </td>
+										<td> {{job.lastDateToApply}} </td>
+									</tr>
+									<tr>
+										<td style="background-color:#15d1b5;"> Job Description </td>
+										<td colspan="3"> {{job.jobDesc}} </td>
+									</tr>
+									<tr>
+										<td style="background-color:#15d1b5;"> Required Skills </td>
+										<td colspan="3"> {{job.skills}} </td>
+									</tr>
+									<tr>
+										<td style="background-color:#15d1b5;"> Experience </td>
+										<td> {{job.experienceYear}} year/s </td>
+										<td style="background-color:#15d1b5;"> CTC </td>
+										<td> {{job.ctc}}/annum </td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

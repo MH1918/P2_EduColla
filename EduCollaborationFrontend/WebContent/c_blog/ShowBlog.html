@@ -1,0 +1,42 @@
+
+<div ng-controller="BlogController">
+	<div class="container-fluid">
+		<div style="background-color:#ff9933; padding:1px;"><h2 align="center">Blogs</h2></div>
+	</div>
+	<br><br>
+	<div class="container">
+	<div class="row">
+		<div class="main1">
+			<div>
+				<div class="panel-group" id="accordion">
+					<div class="panel panle-default" ng-repeat="blog in blogData">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion" href="/#{{blog.blogId}}">{{blog.blogName}}</a>
+								<span class="nav navbar-nav navbar-right">
+									<span ng-show="blog.username==currentUser.username">
+										<img alt="" src="editIcon.png" width="20" height="20" ng-click="editBlog(blog.blogId)"/>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<img alt="" src="delete.png" width="20" height="20" ng-click="deleteBlog(blog.blogId)"/>
+									</span>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<img alt="" src="likeIcon.png" width="20" height="20" ng-click="incrementLikes(blog.blogId)"/>{{blog.likes}}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<img alt="" src="dislikeIcon.png" width="20" height="20" ng-click="incrementDislikes(blog.blogId)"/>{{blog.dislikes}}
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span>
+										<img alt="" src="commentIcon.png" width="20" height="20" ng-click="showComment(blog.blogId)"/>
+									</span>
+								</span>
+							</h4>
+						</div>
+						<div id="{{blog.blogId}}" class="panel-collapse collapse">
+							<div class="panel-body">{{blog.blogContent}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

@@ -1,0 +1,23 @@
+<div ng-controller="ChatController">
+	<div class="container-fluid">
+		<div style="background-color:#11a688; color: white; padding:1px;"><h2 align="center">Chat Window</h2></div>
+	</div>
+	<br><br>
+	<div class="container">
+		<form ng-submit="addMessage()" name="chatMsg">
+			<table class="table table-bordered">
+				<tr>
+					<td> Message </td>
+					<td><textarea ng-model="message" name="message" cols="40" rows="4"></textarea></td>
+					<td><span class="count" ng-bind="max - message.length"> 140 </span></td>
+					<td><button ng-disabled="message.length>140 || message.length==0" class="btn btn-success"> &nbsp;&nbsp;Send&nbsp;&nbsp; </button></td>
+				</tr>
+			</table>
+		</form>
+		
+		<p ng-repeat="message in messages|orderBy:'time':true">
+			<time> {{message.time|date: 'HH:mm'}} </time>
+			<span> {{message.message}} </span>
+		</p>
+	</div>
+</div>

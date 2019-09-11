@@ -1,0 +1,48 @@
+
+<div ng-controller="ForumCommentController">
+	<div class="container-fluid">
+		<div style="background-color:#08a199; color: white; padding:1px;"><h2 align="center">Forum Comments</h2></div>
+	</div>
+	<br><br>
+	<div class="container">
+		<div class="row">
+			<div class="main1">
+				<div>
+					<div class="panel-group" id="accordion">
+						<div class="panel panle-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion" href="/#{{forum.forumId}}">{{forum.forumName}}</a>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span ng-show="forum.username==currentUser.username">
+										<img alt="" src="editIcon.png" width="20" height="20" ng-click="editForum(forum.forumId)"/>
+										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<img alt="" src="delete.png" width="20" height="20" ng-click="deleteForum(forum.forumId)"/>
+									</span>
+								</h4>
+							</div>
+							<div id="{{forum.forumId}}" class="panel-collapse collapse">
+								<div class="panel-body">{{forum.forumContent}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<ul class="list-group">
+				<li class="list-group-item list-group-item" ng-repeat="comment in forumComments">
+					{{comment.username}}:&nbsp;&nbsp;{{comment.forumCommentText}}
+					<span class="badge badge-primary badge-pill">{{comment.forumCommentDate}}</span>
+					<span ng-show="comment.username==currentUser.username">
+						<img alt="" src="delete.png" width="20" height="20" ng-click="deleteComment(comment.forumCommentId)"/>
+					</span>
+				</li>
+			</ul>
+		</div>
+		<div ng-hide="currentUser==undefined">
+			<textarea rows="4" cols="80" ng-model="forumComment.forumCommentText"></textarea>
+			<input type="button" class="btn btn-primary" ng-click="addComment()" value="Add Comment"/>
+		</div>
+	</div>
+</div>

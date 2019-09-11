@@ -1,0 +1,34 @@
+
+<div ng-controller="BlogController">
+	<div class="container-fluid">
+		<div style="background-color:#ff9933; padding:1px;"><h2 align="center">Managing Blogs</h2></div>
+	</div>
+	<br><br>
+	<div class="container">
+		<div class="row">
+			<div class="main1">
+				<table class="table table-bordered">
+					<tr bgcolor="cyan">
+						<th> Blog Id </th>
+						<th> Blog Name </th>
+						<th> Created By </th>
+						<th> Creation Date </th>
+						<th> Operations </th>
+					</tr>
+					<tr ng-repeat="blog in blogData">
+						<td>{{blog.blogId}}</td>
+						<td>{{blog.blogName}}</td>
+						<td>{{blog.username}}</td>
+						<td>{{blog.createDate}}</td>
+						<td ng-hide="blog.status=='A'">
+							<input type="button" value="Approve" class="btn btn-info" ng-click="approve(blog.blogId)"/>
+						</td>
+						<td ng-hide="blog.status=='NA'">
+							<input type="button" value="Reject" class="btn btn-danger" ng-click="reject(blog.blogId)"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

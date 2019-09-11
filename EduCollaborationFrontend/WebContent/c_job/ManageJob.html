@@ -1,0 +1,35 @@
+
+<div ng-controller="JobController">
+	<div class="container-fluid">
+		<div style="padding:1px; background-color: #0c73cc; color: white;"><h2 align="center""><h2 align="center">Managing Jobs</h2></div>
+	</div>
+	<br><br>
+	<div class="container">
+		<div class="row">
+			<div class="main1">
+				<h3>Manage Job Details</h3>
+				<table class="table table-bordered">
+					<tr bgcolor="cyan">
+						<th> Job Id </th>
+						<th> Job Designation </th>
+						<th> Company Name </th>
+						<th> Last Date </th>
+						<th> CTC </th>
+						<th colspan="2"> Operations </th>
+					</tr>
+					<tr ng-repeat="job in jobs">
+						<td>{{job.jobId}}</td>
+						<td>{{job.designation}}</td>
+						<td>{{job.companyName}}</td>
+						<td>{{job.lastDateToApply}}</td>
+						<td>{{job.ctc}}</td>
+						<td>
+							<input type="button" value="Edit" class="btn btn-info" ng-click="editJob(job.jobId)"/>
+							<input type="button" value="Delet" class="btn btn-danger" ng-click="deleteJob(job.jobId)"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

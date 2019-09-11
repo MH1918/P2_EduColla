@@ -1,0 +1,34 @@
+
+<div ng-controller="ForumController">
+	<div class="container-fluid">
+		<div style="background-color:#08a199; color: white; padding:1px;"><h2 align="center">Managing Forums</h2></div>
+	</div>
+	<br><br>
+	<div class="container">
+		<div class="row">
+			<div class="main1">
+				<table class="table table-bordered">
+					<tr bgcolor="cyan">
+						<th> Forum Id </th>
+						<th> Forum Name </th>
+						<th> Created By </th>
+						<th> Creation Date </th>
+						<th> Operations </th>
+					</tr>
+					<tr ng-repeat="forum in forumData">
+						<td>{{forum.forumId}}</td>
+						<td>{{forum.forumName}}</td>
+						<td>{{forum.username}}</td>
+						<td>{{forum.createDate}}</td>
+						<td ng-hide="forum.status=='A'">
+							<input type="button" value="Approve" class="btn btn-info" ng-click="approve(forum.forumId)"/>
+						</td>
+						<td ng-hide="forum.status=='NA'">
+							<input type="button" value="Reject" class="btn btn-danger" ng-click="reject(forum.forumId)"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,88 @@
+<html>
+    <head>
+    	<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-cookies.min.js"></script>
+        <title>Angular Route</title>
+        <script src="RouteConfig.js"></script>
+        <script src="c_user/UserController.js"></script>
+        <script src="c_blog/BlogController.js"></script>
+        <script src="c_blog/BlogCommentController.js"></script>
+        <script src="c_job/JobController.js"></script>
+        <script src="c_friend/FriendController.js"></script>
+        <script src="c_forum/ForumController.js"></script>
+        <script src="c_forum/ForumCommentController.js"></script>
+        <script src="c_chat/ChatController.js"></script>
+        <script src="c_chat/ChatService.js"></script>
+
+<!-- These 3 scripts are for implementing Chat -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+    	
+    <body ng-app="myApp">
+    	
+    	<div class="container-fluid">
+			<nav class="navbar navbar-light" style="background-color: #21bdcf;">
+				<div class="container-fluid">
+				
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#">EduCollaboration</a>
+					</div>
+					
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li ><a href="#!login" ng-hide="currentUser!=undefined">Login</a></li>
+						<li><a href="#!register" ng-hide="currentUser!=undefined">Sign Up</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="#!addBlog" ng-hide="currentUser==undefined">Add Blog</a></li>
+								<li><a class="nav-link" href="#!adminBlog" ng-hide="currentUser==undefined">Manage Blog</a></li>
+								<li><a class="nav-link" href="#!showBlog">Show Blog</a></li>
+							</ul>
+						</li>
+						<li><a href="#!profileUpdate" ng-hide="currentUser==undefined">Profile Update</a></li>
+						<li><a href="#!friend" ng-hide="currentUser==undefined">Friend</a></li>
+						<li><a href="#!chat" ng-hide="currentUser==undefined">Chat</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Job<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="#!publishJob" ng-hide="currentUser==undefined">Publish Job</a></li>
+								<li><a class="nav-link" href="#!manageJob" ng-hide="currentUser==undefined">Manage Jobs</a></li>
+								<li><a class="nav-link" href="#!showJob">Show Jobs</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Forum<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a class="nav-link" href="#!addForum" ng-hide="currentUser==undefined">Add Forum</a></li>
+								<li><a class="nav-link" href="#!adminForum" ng-hide="currentUser==undefined">Manage Forums</a></li>
+								<li><a class="nav-link" href="#!showForum">Show Forums</a></li>
+							</ul>
+						</li>
+						<li><a href="#!aboutUs">About Us</a></li>
+						<li><a href="#!contactUs">Contact Us</a></li>
+					</ul>
+					<div class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined">
+						<img alt="" src="http://localhost:8092/EduCollaborationMiddleware/getImage/{{currentUser.username}}" width="25">
+						<font color="white" face="calibri" size="4">Welcome, {{currentUser.name}}</font>
+						<span ng-controller="UserController">
+							<a href="" ng-click="logout()">
+							<span class="glyphicon glyphicon-log-out" style="color: white;"></span>
+							</a>
+						</span>
+					</div>
+				</div>
+			</nav>
+		</div>
+    	
+    	<div ng-view></div>

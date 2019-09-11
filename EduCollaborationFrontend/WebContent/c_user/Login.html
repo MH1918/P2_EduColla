@@ -1,0 +1,39 @@
+
+
+<div ng-controller="UserController">
+	<div class="container-fluid">
+		<div style="padding:1px;"><h2 align="center">Welcome Back</h2></div>
+	</div>
+	<br><br>
+	<div class="container py-5">
+	   <div class="row">
+	       	<div class="col-md-12">
+	           <div class="row">
+					<div class="col-md-3"></div>
+	               	<div class="col-md-6 mx-auto">
+	                   	<div class="card rounded-0" id="login-form">
+	                       	<div class="card-header">
+	                       	</div>
+	                       	<div class="card-body">
+	                           	<form class="form" role="form" id="formLogin" novalidate="" method="POST">
+	                               	<div class="form-group">
+	                                   	<label for="uname1">User-name</label>
+	                                   	<input type="text" class="form-control form-control-lg rounded-0" name="uname" ng-model="user.username" required>
+	    
+	                               	</div>
+	                               	<div class="form-group">
+	                                   	<label>Password</label>
+	                                   	<input type="password" class="form-control form-control-lg rounded-0" name="password" ng-model="user.password" required>
+	                       
+	                               	</div>
+	                               	<button type="submit" class="btn btn-success btn-lg float-right" ng-click="loginCheck()">Login</button>
+	                           	</form>
+	                       	</div>
+	                   	</div>
+	            	</div>
+	            	<div class="col-md-3"></div>
+	        	</div>
+			</div>
+		</div>
+	</div>
+</div>
